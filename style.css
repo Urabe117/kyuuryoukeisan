@@ -1570,3 +1570,25 @@ header.topbar p {
     font-size: 12px;
   }
 }
+
+
+/* preset grid compact */
+#shiftPresetList,.preset-grid{
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:8px;
+ max-height:180px;
+ overflow-y:auto;
+}
+.preset-button{
+display:flex;
+flex-direction:column;
+align-items:flex-start;
+justify-content:center;
+padding:10px;
+min-height:58px;
+}
+.preset-button small{margin-top:4px;}
+@media(max-width:520px){
+ #shiftPresetList,.preset-grid{grid-template-columns:repeat(2,1fr);max-height:170px;}
+}
