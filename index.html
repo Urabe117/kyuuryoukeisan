@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>給料カレンダー</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>給料カレンダー</h1>
+      <p>複数バイトの勤務時間と給料をまとめて管理</p>
+    </div>
+    <div class="header-actions">
+      <div id="authArea" class="auth-area">
+        <span id="userLabel">未ログイン</span>
+        <button id="loginBtn" type="button" class="google-btn">Googleでログイン</button>
+        <button id="logoutBtn" type="button" class="secondary hidden">ログアウト</button>
+      </div>
+      <button id="openJobModalBtn">＋ バイト先登録</button>
+      <button id="openPresetModalBtn">＋ プリセット登録</button>
+      <button id="backupBtn" class="secondary">バックアップ</button>
+      <label class="file-label secondary">
+        復元
+        <input type="file" id="restoreInput" accept=".json" hidden />
+      </label>
+    </div>
+  </header>
+
+  <main>
+    <nav class="view-tabs">
+      <button id="workTabBtn" class="tab-btn active">勤務カレンダー</button>
+      <button id="paydayTabBtn" class="tab-btn">給料日カレンダー</button>
+    </nav>
+    <section id="workView">
+    <section class="summary-grid two">
+      <article class="summary-card">
+        <span>今月の労働時間</span>
+        <strong id="totalHours">0時間</strong>
+      </article>
+      <article class="summary-card">
+        <span>今月の給料</span>
+        <strong id="totalPay">¥0</strong>
+      </article>
+    </section>
+
+    <section class="calendar-card">
+      <div class="calendar-header">
+        <button id="prevMonthBtn" class="icon-btn">‹</button>
+        <div>
+          <h2 id="monthTitle"></h2>
+        </div>
+        <button id="nextMonthBtn" class="icon-btn">›</button>
+      </div>
+
+      <div class="weekdays">
+        <div>日</div><div>月</div><div>火</div><div>水</div><div>木</div><div>金</div><div>土</div>
+      </div>
+      <div id="calendar" class="calendar-grid"></div>
+    </section>
+
+    <section class="table-card">
+      <div class="section-title-row">
+        <h2>バイト別集計</h2>
+        <button id="openShiftModalBtn">＋ 勤務を追加</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>バイト先</th>
+              <th>合計金額</th>
+              <th>労働時間</th>
+            </tr>
+          </thead>
+          <tbody id="summaryBody"></tbody>
+          <tfoot id="summaryFoot"></tfoot>
+        </table>
+      </div>
+    </section>
+
+    </section>
+
+    <section id="paydayView" class="hidden">
+      <section class="summary-grid two">
+        <article class="summary-card"><span>この月の入金予定</span><strong id="paydayMonthTotal">¥0</strong></article>
+        <article class="summary-card"><span>給料日件数</span><strong id="paydayCount">0件</strong></article>
+      </section>
+      <section class="calendar-card">
+        <div class="calendar-header">
+          <button id="payPrevMonthBtn" class="icon-btn">‹</button>
+          <button id="payNextMonthBtn" class="icon-btn">›</button>
+        </div>
+        <div class="weekdays"><div>日</div><div>月</div><div>火</div><div>水</div><div>木</div><div>金</div><div>土</div></div>
+        <div id="paydayCalendar" class="calendar-grid payday-grid"></div>
+      </section>
+      <section class="table-card"><h2>この月の給料日一覧</h2><div id="paydayList" class="payday-list"></div></section>
+    </section>
+  </main>
+
+  <dialog id="jobModal">
+    <form id="jobForm" method="dialog">
+      <div class="modal-header">
+        <h2>バイト先を登録</h2>
+        <button type="button" class="close-btn" data-close="jobModal">×</button>
+      </div>
+      <input type="hidden" id="jobId" />
+      <label>バイト名
+        <input id="jobName" required maxlength="30" />
+      </label>
+      <label>基本時給
+        <input id="hourlyWage" type="number" min="0" required />
+      </label>
+      <label>深夜時給
+        <input id="lateWage" type="number" min="0" placeholder="空欄なら基本時給の1.25倍" />
+      </label>
+      <div class="two-cols">
+        <label>深夜時給の開始
+          <input id="lateStart" type="time" value="22:00" required />
+        </label>
+        <label>深夜時給の終了
+          <input id="lateEnd" type="time" value="05:00" required />
+        </label>
+      </div>
+      <p class="field-note">終了時刻が開始時刻より早い場合は、日付をまたぐ時間帯として計算します。</p>
+      <label>1日あたり交通費
+        <input id="transport" type="number" min="0" value="0" />
+      </label>
+      <div class="pay-settings">
+        <h3>給料日の設定</h3>
+        <div class="two-cols">
+          <label>締め日<select id="cutoffDay"><option value="end">月末</option></select></label>
+          <label>給料日<select id="paydayDay"></select></label>
+        </div>
+        <label>支給月<select id="paydayOffset"><option value="0">締め日と同じ月</option><option value="1" selected>締め日の翌月</option></select></label>
+      </div>
+      <label>表示色</label>
+      <input id="jobColor" type="hidden" value="#7c3aed" />
+      <div id="colorPalette" class="color-palette" aria-label="表示色を選択"></div>
+      <div class="modal-actions">
+        <button type="button" id="deleteJobBtn" class="danger hidden">削除</button>
+        <button type="submit">保存</button>
+      </div>
+      <div id="jobManageList" class="manage-list"></div>
+    </form>
+  </dialog>
+
+  <dialog id="presetModal">
+    <form id="presetForm" method="dialog">
+      <div class="modal-header">
+        <h2>勤務プリセットを登録</h2>
+        <button type="button" class="close-btn" data-close="presetModal">×</button>
+      </div>
+      <input type="hidden" id="presetId" />
+      <label>プリセット名
+        <input id="presetName" required maxlength="30" placeholder="例：オリジン 夜" />
+      </label>
+      <label>バイト先
+        <select id="presetJob" required></select>
+      </label>
+      <div class="two-cols">
+        <label>開始時刻
+          <input id="presetStart" type="time" required />
+        </label>
+        <label>終了時刻
+          <input id="presetEnd" type="time" required />
+        </label>
+      </div>
+      <label>休憩（分）
+        <input id="presetBreak" type="number" min="0" value="0" />
+      </label>
+      <div class="modal-actions">
+        <button type="button" id="deletePresetBtn" class="danger hidden">削除</button>
+        <button type="submit">保存</button>
+      </div>
+      <div id="presetManageList" class="manage-list"></div>
+    </form>
+  </dialog>
+
+  <dialog id="shiftModal" class="shift-dialog">
+    <form id="shiftForm" method="dialog">
+      <div class="modal-header">
+        <h2>勤務を登録</h2>
+        <button type="button" class="close-btn" data-close="shiftModal">×</button>
+      </div>
+
+      <input type="hidden" id="shiftId" />
+      <input type="hidden" id="shiftJob" />
+
+      <label>日付
+        <input id="shiftDate" type="date" required />
+      </label>
+
+      <div>
+        <label>バイト先</label>
+        <div id="shiftJobChoices" class="job-choice-grid" role="radiogroup" aria-label="バイト先"></div>
+      </div>
+
+      <div class="time-row">
+        <label>開始時刻
+          <input id="startTime" type="time" required />
+        </label>
+        <label>終了時刻
+          <input id="endTime" type="time" required />
+        </label>
+      </div>
+
+      <label>休憩（分）
+        <input id="breakMinutes" type="number" min="0" value="0" inputmode="numeric" />
+      </label>
+
+      <div id="calcPreview" class="calc-preview">勤務時間と給料がここに表示されます</div>
+
+      <div class="modal-actions">
+        <button type="button" id="deleteShiftBtn" class="danger hidden">削除</button>
+        <button type="submit">保存</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="shiftDetailModal" class="detail-dialog">
+    <div class="detail-dialog-inner">
+      <div class="modal-header">
+        <h2>勤務の詳細</h2>
+        <button type="button" class="close-btn" data-close="shiftDetailModal">×</button>
+      </div>
+      <div id="shiftDetailBody" class="shift-detail-body"></div>
+      <div class="modal-actions">
+        <button type="button" id="editShiftFromDetailBtn">編集</button>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="paydayDetailModal" class="detail-dialog">
+    <div class="detail-dialog-inner">
+      <div class="modal-header">
+        <h2 id="paydayDetailTitle">給料日の詳細</h2>
+        <button type="button" class="close-btn" data-close="paydayDetailModal">×</button>
+      </div>
+      <div id="paydayDetailBody" class="payday-detail-body"></div>
+    </div>
+  </dialog>
+
+  <div id="loginOverlay" class="login-overlay">
+    <div class="login-card">
+      <h2>給料カレンダー</h2>
+      <p>PCとスマホで同期するには、同じGoogleアカウントでログインしてください。</p>
+      <button id="overlayLoginBtn" type="button" class="google-btn">Googleでログイン</button>
+      <small id="syncStatus">ログイン待ち</small>
+    </div>
+  </div>
+  <script type="module" src="script.js"></script>
+</body>
+</html>

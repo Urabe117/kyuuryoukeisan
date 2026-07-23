@@ -1,0 +1,1275 @@
+
+:root {
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --accent: #7c3aed;
+  --danger: #dc2626;
+  --shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+button, input, select, textarea { font: inherit; }
+
+button, .file-label {
+  border: 0;
+  border-radius: 12px;
+  padding: 10px 14px;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+button.secondary, .file-label.secondary {
+  background: #eef2ff;
+  color: #4338ca;
+}
+
+button.danger {
+  background: #fee2e2;
+  color: var(--danger);
+}
+
+.hidden { display: none !important; }
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 24px clamp(16px, 4vw, 48px);
+  background: #111827;
+  color: #fff;
+}
+
+.topbar h1 { margin: 0 0 6px; font-size: clamp(24px, 4vw, 36px); }
+.topbar p { margin: 0; color: #cbd5e1; }
+.header-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+main {
+  width: min(1200px, calc(100% - 24px));
+  margin: 24px auto 48px;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.summary-card, .goal-card, .calendar-card, .table-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+.summary-card { padding: 18px; }
+.summary-card span { display: block; color: var(--muted); margin-bottom: 8px; }
+.summary-card strong { font-size: 26px; }
+
+.goal-card {
+  margin-top: 16px;
+  padding: 18px;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 20px;
+  align-items: end;
+}
+
+.goal-card label { display: grid; gap: 8px; font-weight: 700; }
+
+input, select, textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: #fff;
+}
+
+.progress-track {
+  height: 14px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+#progressBar {
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  transition: width .25s ease;
+}
+
+.goal-progress p { margin: 8px 0 0; color: var(--muted); }
+
+.calendar-card { margin-top: 16px; padding: 18px; }
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.calendar-header h2 { margin: 0; }
+.icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 28px;
+  padding: 0;
+}
+
+.text-btn {
+  background: transparent;
+  color: var(--accent);
+  padding: 4px 8px;
+}
+
+.weekdays, .calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.weekdays div {
+  text-align: center;
+  padding: 8px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.day {
+  min-height: 122px;
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+  padding: 8px;
+  background: #fff;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.day:nth-child(7n) { border-right: 1px solid var(--border); }
+.day.outside { background: #f9fafb; color: #9ca3af; }
+.day.today { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+.day-number {
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.shift-chip {
+  border-radius: 8px;
+  padding: 5px 6px;
+  margin-bottom: 5px;
+  font-size: 12px;
+  line-height: 1.25;
+  color: #fff;
+  cursor: pointer;
+}
+
+.table-card { margin-top: 16px; padding: 18px; }
+.section-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.section-title-row h2 { margin: 0; }
+
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; min-width: 720px; }
+th, td { padding: 12px; border-bottom: 1px solid var(--border); text-align: right; }
+th:first-child, td:first-child { text-align: left; }
+tfoot td { font-weight: 800; }
+
+.shift-list { display: grid; gap: 10px; }
+
+.shift-row {
+  display: grid;
+  grid-template-columns: 130px 1fr auto auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.shift-main strong { display: block; }
+.shift-main small { color: var(--muted); }
+.status {
+  padding: 5px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+}
+.status.actual { background: #dcfce7; color: #166534; }
+.status.planned { background: #fef3c7; color: #92400e; }
+
+dialog {
+  width: min(560px, calc(100% - 24px));
+  border: 0;
+  border-radius: 18px;
+  padding: 0;
+  box-shadow: 0 30px 80px rgba(0,0,0,.25);
+}
+
+dialog::backdrop { background: rgba(15,23,42,.55); }
+dialog form { padding: 20px; display: grid; gap: 14px; }
+
+.modal-header, .modal-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.modal-header h2 { margin: 0; }
+.close-btn {
+  background: #f3f4f6;
+  color: #111827;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  padding: 0;
+}
+
+.two-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+label { display: grid; gap: 7px; font-weight: 700; }
+.calc-preview {
+  padding: 12px;
+  background: #f5f3ff;
+  color: #4c1d95;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+.manage-list {
+  display: grid;
+  gap: 8px;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+
+.manage-job {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px;
+  background: #f9fafb;
+  border-radius: 10px;
+}
+
+.color-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.empty {
+  text-align: center;
+  padding: 24px;
+  color: var(--muted);
+}
+
+@media (max-width: 800px) {
+  .topbar { align-items: flex-start; flex-direction: column; }
+  .summary-grid { grid-template-columns: repeat(2, 1fr); }
+  .goal-card { grid-template-columns: 1fr; }
+  .day { min-height: 92px; padding: 5px; }
+  .shift-chip { font-size: 10px; padding: 4px; }
+  .shift-row { grid-template-columns: 1fr auto; }
+  .shift-row > :nth-child(1) { grid-column: 1 / -1; }
+}
+
+@media (max-width: 520px) {
+  .summary-grid { grid-template-columns: 1fr 1fr; }
+  .summary-card strong { font-size: 20px; }
+  .calendar-card, .table-card { padding: 12px; }
+  .weekdays div { font-size: 12px; }
+  .day { min-height: 76px; }
+  .shift-chip span { display: none; }
+  .two-cols { grid-template-columns: 1fr; }
+}
+
+
+.color-palette { display:grid; grid-template-columns:repeat(10, minmax(28px,1fr)); gap:8px; }
+.color-choice { width:100%; aspect-ratio:1; min-width:28px; padding:0; border-radius:50%; border:3px solid transparent; box-shadow:inset 0 0 0 1px rgba(0,0,0,.12); }
+.color-choice.selected { border-color:#111827; transform:scale(1.08); }
+.field-note { margin:-6px 0 0; color:var(--muted); font-size:13px; }
+.preset-buttons { display:flex; flex-wrap:wrap; gap:9px; }
+.preset-buttons.compact { margin-top:8px; }
+.preset-button { display:flex; align-items:center; gap:8px; background:#f8fafc; color:#111827; border:1px solid var(--border); font-weight:700; }
+.preset-button:hover { background:#eef2ff; }
+.preset-button small { color:var(--muted); font-weight:600; }
+@media (max-width:520px){ .color-palette{grid-template-columns:repeat(5,1fr)} .preset-button{width:100%;justify-content:space-between} }
+
+.view-tabs{display:flex;gap:8px;margin-bottom:16px;background:#fff;padding:8px;border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow)}
+.tab-btn{flex:1;background:transparent;color:var(--muted)}
+.tab-btn.active{background:var(--accent);color:#fff}
+.summary-grid.two{grid-template-columns:repeat(2,1fr)}
+.pay-settings{padding:14px;background:#f9fafb;border:1px solid var(--border);border-radius:12px}
+.pay-settings h3{margin:0 0 12px}
+.payday-list{display:grid;gap:10px}
+.payday-row{display:grid;grid-template-columns:1fr 1fr auto;align-items:center;gap:12px;padding:14px;border:1px solid var(--border);border-radius:12px}
+.payday-row small{display:block;color:var(--muted);margin-top:4px}
+.payday-chip{cursor:default}
+@media(max-width:600px){.payday-row{grid-template-columns:1fr auto}.payday-row>div:nth-child(2){grid-column:1/-1}.summary-grid.two{grid-template-columns:1fr 1fr}}
+
+
+.auth-area { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.auth-area span { color:#e5e7eb; font-size:13px; max-width:180px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.google-btn { background:#fff; color:#1f2937; border:1px solid #d1d5db; }
+.login-overlay { position:fixed; inset:0; z-index:9999; display:grid; place-items:center; background:rgba(15,23,42,.72); padding:20px; }
+.login-overlay.hidden { display:none; }
+.login-card { width:min(420px,100%); background:#fff; border-radius:20px; padding:28px; text-align:center; box-shadow:0 30px 90px rgba(0,0,0,.3); }
+.login-card h2 { margin-top:0; }
+.login-card p { color:#6b7280; line-height:1.7; }
+.login-card small { display:block; margin-top:14px; color:#6b7280; }
+.sync-ok { color:#166534 !important; }
+.sync-error { color:#b91c1c !important; }
+
+
+/* スマホ版：カレンダー内の勤務ラベルを横長・1行表示にする */
+.shift-chip b {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 520px) {
+  .day {
+    min-height: 72px;
+    padding: 4px;
+  }
+
+  .day-number {
+    margin-bottom: 3px;
+  }
+
+  .shift-chip {
+    width: 100%;
+    min-height: 0;
+    margin-bottom: 3px;
+    padding: 3px 5px;
+    border-radius: 6px;
+    font-size: 9px;
+    line-height: 1.15;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .shift-chip b {
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .shift-chip br,
+  .shift-chip span {
+    display: none;
+  }
+}
+
+
+/* ===== スマホ操作・表示改善 v2 ===== */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+main, section, .calendar-card, .table-card, .table-wrap {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.table-wrap {
+  overflow-x: hidden;
+}
+
+table {
+  width: 100%;
+  min-width: 0;
+  table-layout: fixed;
+}
+
+th, td {
+  overflow-wrap: anywhere;
+}
+
+th:first-child, td:first-child { width: 42%; }
+th:nth-child(2), td:nth-child(2) { width: 33%; }
+th:nth-child(3), td:nth-child(3) { width: 25%; }
+
+dialog {
+  max-width: calc(100vw - 20px);
+  overflow-x: hidden;
+}
+
+dialog form {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+dialog input,
+dialog select,
+dialog textarea,
+dialog label,
+dialog .two-cols,
+dialog .manage-list,
+dialog .manage-job,
+dialog .preset-buttons,
+dialog .color-palette {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.manage-job > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.shift-chip {
+  display: grid;
+  gap: 2px;
+}
+
+.shift-chip b,
+.shift-chip span {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.shift-chip span {
+  font-weight: 800;
+}
+
+.payday-chip span {
+  display: block !important;
+}
+
+@media (max-width: 520px) {
+  main {
+    width: min(100% - 12px, 1200px);
+  }
+
+  .table-card {
+    padding: 12px 10px;
+  }
+
+  .table-card .section-title-row {
+    align-items: center;
+  }
+
+  .table-card h2 {
+    font-size: 23px;
+  }
+
+  th, td {
+    padding: 10px 6px;
+    font-size: 13px;
+  }
+
+  th:first-child, td:first-child { width: 39%; }
+  th:nth-child(2), td:nth-child(2) { width: 35%; }
+  th:nth-child(3), td:nth-child(3) { width: 26%; }
+
+  .shift-chip {
+    padding: 3px 4px;
+    font-size: 8px;
+    line-height: 1.1;
+  }
+
+  .shift-chip b,
+  .shift-chip span {
+    display: block !important;
+  }
+
+  .shift-chip b {
+    font-size: 8px;
+  }
+
+  .shift-chip span {
+    font-size: 8px;
+  }
+
+  .payday-chip b {
+    font-size: 8px;
+  }
+
+  .payday-chip span {
+    font-size: 8px;
+  }
+
+  dialog {
+    width: calc(100vw - 16px);
+    margin-inline: auto;
+  }
+
+  dialog form {
+    padding: 16px 14px;
+  }
+
+  dialog .two-cols {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .color-palette {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .preset-button {
+    max-width: 100%;
+    min-width: 0;
+  }
+}
+
+
+/* ===== 勤務登録モーダル・カレンダー改善 v3 ===== */
+.shift-dialog {
+  width: min(560px, calc(100vw - 20px));
+  max-height: calc(100dvh - 20px);
+}
+
+.shift-dialog form {
+  gap: 12px;
+  overflow: hidden;
+}
+
+.shift-dialog input {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.time-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+}
+
+.job-choice-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+}
+
+.job-choice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 0;
+  padding: 10px 8px;
+  background: #f8fafc;
+  color: #1f2937;
+  border: 2px solid transparent;
+  border-radius: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.job-choice > span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.job-choice.selected {
+  border-color: var(--accent);
+  background: #f5f3ff;
+  color: #5b21b6;
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, .12);
+}
+
+.shift-chip {
+  display: block;
+  text-align: center;
+}
+
+.shift-chip b {
+  display: block;
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap;
+}
+
+.shift-chip span {
+  display: none !important;
+}
+
+.payday-grid .day.has-payday {
+  cursor: pointer;
+}
+
+.payday-marker {
+  width: 100%;
+  min-width: 0;
+  padding: 4px 3px;
+  border-radius: 7px;
+  font-size: 10px;
+  line-height: 1.1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-dialog {
+  width: min(440px, calc(100vw - 24px));
+  border: 0;
+  border-radius: 18px;
+  padding: 0;
+}
+
+.detail-dialog-inner {
+  padding: 18px;
+}
+
+.payday-detail-body {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.payday-detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  padding: 13px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+@media (max-width: 520px) {
+  .shift-dialog {
+    width: calc(100vw - 12px);
+    max-width: calc(100vw - 12px);
+    max-height: calc(100dvh - 12px);
+  }
+
+  .shift-dialog form {
+    padding: 14px 12px;
+    gap: 9px;
+  }
+
+  .shift-dialog .modal-header h2 {
+    font-size: 25px;
+  }
+
+  .shift-dialog label {
+    gap: 4px;
+    font-size: 14px;
+  }
+
+  .shift-dialog input {
+    padding: 9px 8px;
+    font-size: 16px;
+  }
+
+  .shift-dialog .close-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .job-choice-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .job-choice {
+    padding: 8px 5px;
+    font-size: 12px;
+  }
+
+  .time-row {
+    gap: 8px;
+  }
+
+  .calc-preview {
+    padding: 9px;
+    font-size: 13px;
+  }
+
+  .shift-dialog .modal-actions button {
+    padding: 9px 13px;
+  }
+
+  .day .shift-chip {
+    padding: 3px 2px;
+    font-size: 8px;
+  }
+
+  .day .shift-chip b {
+    font-size: 8px;
+    letter-spacing: -0.2px;
+  }
+
+  .payday-marker {
+    font-size: 8px;
+  }
+}
+
+
+/* ===== 画面改善 v4 ===== */
+.shift-dialog {
+  width: min(540px, calc(100vw - 16px));
+  max-width: calc(100vw - 16px);
+  margin-inline: auto;
+}
+
+.shift-dialog form {
+  width: 100%;
+  max-width: 100%;
+  padding: 18px;
+  overflow-x: clip;
+}
+
+.time-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 6px;
+  align-items: end;
+}
+
+.time-row label,
+.time-row input {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.shift-chip {
+  display: grid;
+  gap: 2px;
+  text-align: left;
+}
+
+.shift-chip b,
+.shift-chip span {
+  display: block !important;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.shift-chip b { font-weight: 800; }
+.shift-chip span { font-weight: 700; }
+
+.shift-detail-body { margin-top: 16px; }
+.shift-detail-card { display: grid; gap: 16px; }
+.shift-detail-job {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+}
+.shift-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.shift-detail-grid > div {
+  display: grid;
+  gap: 5px;
+  padding: 13px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #f9fafb;
+}
+.shift-detail-grid span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.payday-marker {
+  display: grid;
+  gap: 1px;
+  width: 100%;
+  margin-bottom: 3px;
+  padding: 4px 3px;
+  color: #fff;
+  border-radius: 7px;
+  overflow: hidden;
+}
+.payday-marker span,
+.payday-marker strong {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.payday-marker span {
+  font-size: 8px;
+  font-weight: 700;
+}
+.payday-marker strong {
+  font-size: 9px;
+}
+
+@media (max-width: 520px) {
+  .shift-dialog {
+    width: calc(100vw - 10px);
+    max-width: calc(100vw - 10px);
+  }
+  .shift-dialog form {
+    padding: 14px 10px;
+  }
+  .time-row {
+    gap: 4px;
+  }
+  .time-row input {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .shift-chip {
+    padding: 3px 4px;
+    text-align: left;
+  }
+  .shift-chip b,
+  .shift-chip span {
+    font-size: 8px;
+    line-height: 1.05;
+  }
+  .payday-marker {
+    padding: 3px 2px;
+  }
+  .payday-marker span {
+    font-size: 7px;
+  }
+  .payday-marker strong {
+    font-size: 8px;
+  }
+}
+
+
+/* ===== v5: プリセット修正・右端見切れ対策 ===== */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+}
+
+dialog,
+dialog form,
+.shift-dialog,
+.shift-dialog form,
+.detail-dialog,
+.detail-dialog-inner {
+  box-sizing: border-box;
+}
+
+.shift-dialog {
+  width: calc(100vw - 24px) !important;
+  max-width: 520px !important;
+  margin: auto !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+.shift-dialog form {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 16px !important;
+  margin: 0 !important;
+  overflow-x: hidden !important;
+}
+
+.shift-dialog *,
+.preset-dialog *,
+#presetModal *,
+#jobModal * {
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.shift-dialog input,
+.shift-dialog select,
+.shift-dialog textarea,
+#presetModal input,
+#presetModal select,
+#presetModal textarea,
+#jobModal input,
+#jobModal select,
+#jobModal textarea {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.time-row {
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  gap: 8px !important;
+}
+
+.time-row > label {
+  width: 100%;
+  min-width: 0;
+}
+
+.time-row input[type="time"] {
+  width: 100% !important;
+  min-width: 0 !important;
+  padding-left: 4px !important;
+  padding-right: 4px !important;
+}
+
+.job-choice-grid {
+  width: 100%;
+  overflow: hidden;
+}
+
+@media (max-width: 520px) {
+  .shift-dialog {
+    width: calc(100vw - 16px) !important;
+    max-width: calc(100vw - 16px) !important;
+  }
+
+  .shift-dialog form {
+    padding: 14px 10px !important;
+  }
+
+  .time-row {
+    gap: 6px !important;
+  }
+
+  .job-choice-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  #presetModal,
+  #jobModal {
+    width: calc(100vw - 16px) !important;
+    max-width: calc(100vw - 16px) !important;
+    overflow-x: hidden !important;
+  }
+
+  #presetModal form,
+  #jobModal form {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 14px 10px !important;
+    overflow-x: hidden !important;
+  }
+}
+
+
+/* ===== v6: プリセット起動修正・モーダル見切れ根本対策 ===== */
+dialog {
+  width: min(520px, 92vw) !important;
+  max-width: 92vw !important;
+  margin: auto !important;
+  padding: 0 !important;
+  overflow-x: hidden !important;
+}
+
+dialog form,
+.detail-dialog-inner {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 16px !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  overflow-x: hidden !important;
+}
+
+dialog *,
+dialog *::before,
+dialog *::after {
+  box-sizing: border-box !important;
+  min-width: 0;
+}
+
+dialog input,
+dialog select,
+dialog textarea {
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+}
+
+dialog input[type="date"],
+dialog input[type="time"] {
+  -webkit-appearance: none;
+  appearance: none;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+}
+
+.time-row {
+  width: 100% !important;
+  grid-template-columns: calc(50% - 4px) calc(50% - 4px) !important;
+  gap: 8px !important;
+}
+
+.time-row > label {
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+#jobModal,
+#presetModal,
+#shiftModal {
+  width: min(520px, 92vw) !important;
+  max-width: 92vw !important;
+}
+
+@media (max-width: 520px) {
+  dialog,
+  #jobModal,
+  #presetModal,
+  #shiftModal {
+    width: 90vw !important;
+    max-width: 90vw !important;
+  }
+
+  dialog form,
+  .detail-dialog-inner {
+    padding: 14px 12px !important;
+  }
+
+  .time-row {
+    grid-template-columns: calc(50% - 3px) calc(50% - 3px) !important;
+    gap: 6px !important;
+  }
+}
+
+
+/* ===== v7: カレンダー内の店舗名・時間表示調整 ===== */
+.shift-chip b {
+  font-size: 9px;
+  line-height: 1.05;
+  font-weight: 700;
+}
+
+.shift-chip span {
+  font-size: 11px;
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+}
+
+@media (max-width: 520px) {
+  .shift-chip {
+    padding: 3px 2px;
+  }
+
+  .shift-chip b {
+    font-size: 7px;
+    line-height: 1;
+  }
+
+  .shift-chip span {
+    font-size: 8px;
+    line-height: 1;
+    letter-spacing: -0.65px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+  }
+}
+
+
+/* ===== v9: カレンダーと勤務詳細の表示調整 ===== */
+.shift-chip {
+  text-align: center;
+  display: grid;
+  gap: 2px;
+  align-content: start;
+}
+
+.shift-chip b,
+.shift-chip span {
+  font-weight: 600 !important;
+}
+
+.shift-chip b {
+  font-size: 7px !important;
+  line-height: 1 !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.shift-time-vertical {
+  display: grid !important;
+  justify-items: center;
+  gap: 1px;
+  font-size: 8px !important;
+  line-height: 1 !important;
+  letter-spacing: -0.2px;
+}
+
+.shift-time-vertical > span {
+  display: block !important;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+.shift-time-vertical i {
+  display: block;
+  width: 1px;
+  height: 6px;
+  background: currentColor;
+  opacity: .85;
+}
+
+.shift-detail-list {
+  display: grid;
+  gap: 10px;
+}
+
+.shift-detail-list > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #f9fafb;
+}
+
+.shift-detail-list span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.shift-detail-list strong {
+  font-size: 18px;
+}
+
+#shiftDetailModal .modal-actions {
+  margin-top: 22px;
+}
+
+#shiftDetailModal .modal-actions button {
+  min-width: 110px;
+}
+
+@media (max-width: 520px) {
+  .shift-chip b {
+    font-size: 6px !important;
+  }
+
+  .shift-time-vertical {
+    font-size: 7px !important;
+  }
+
+  .shift-time-vertical i {
+    height: 5px;
+  }
+
+  .shift-detail-list > div {
+    padding: 11px 12px;
+  }
+
+  .shift-detail-list strong {
+    font-size: 17px;
+  }
+
+  #shiftDetailModal .modal-actions {
+    margin-top: 20px;
+  }
+}
+
+
+/* ===== v10: 縦棒を中央に固定 ===== */
+.shift-time-vertical {
+  width: 100% !important;
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  justify-items: center !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.shift-time-vertical > span {
+  width: 100% !important;
+  text-align: center !important;
+}
+
+.shift-time-vertical > i {
+  display: block !important;
+  width: 1px !important;
+  height: 6px;
+  margin: 0 auto !important;
+  justify-self: center !important;
+  align-self: center !important;
+  position: static !important;
+  transform: none !important;
+}
+
+@media (max-width: 520px) {
+  .shift-time-vertical > i {
+    height: 5px;
+  }
+}
+
+.back-to-today,.today-link,.today-btn{display:none !important;}
+
+
+/* v12: ベースカラーを落ち着いたグレーへ */
+:root{
+  --primary:#6b7280;
+  --primary-dark:#4b5563;
+  --primary-light:#e5e7eb;
+  --accent:#9ca3af;
+}
+
+/* 紫系をベースグレーへ */
+button:not(.store-origin):not(.store-banban):not(.store-kushikatsu),
+.btn-primary,
+.header-button,
+.calendar-nav,
+.fab,
+.primary{
+  background:var(--primary)!important;
+  border-color:var(--primary)!important;
+  color:#fff!important;
+}
+
+button:hover,
+.btn-primary:hover{
+  background:var(--primary-dark)!important;
+}
+
+.current-day,
+.selected{
+  outline-color:var(--primary)!important;
+}
+
+.progress-fill{
+  background:var(--primary)!important;
+}
