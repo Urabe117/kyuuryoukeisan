@@ -797,8 +797,11 @@ function renderPaydayCalendar() {
   const cal = document.getElementById("paydayCalendar");
   if (!cal) return;
 
-  document.getElementById("payMonthTitle").textContent =
-    `${paydayDate.getFullYear()}年 ${paydayDate.getMonth() + 1}月`;
+  const payMonthTitle = document.getElementById("payMonthTitle");
+  if (payMonthTitle) {
+    payMonthTitle.textContent =
+      `${paydayDate.getFullYear()}年 ${paydayDate.getMonth() + 1}月`;
+  }
 
   const entries = getPaydayEntries().filter(entry => {
     const date = new Date(`${entry.date}T00:00:00`);
@@ -967,8 +970,14 @@ async function connectUserCloud(user) {
       applyingCloudData = true;
       data = { ...safeClone(defaultData), ...cloud };
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-      renderAll();
-      applyingCloudData = false;
+      try {
+        renderAll();
+      } catch (renderError) {
+        console.error("UI render failed:", renderError);
+        alert(`画面の表示処理でエラーが発生しました。\n${renderError.message}`);
+      } finally {
+        applyingCloudData = false;
+      }
     }
   }
 
@@ -981,8 +990,14 @@ async function connectUserCloud(user) {
       applyingCloudData = true;
       data = { ...safeClone(defaultData), ...cloud };
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-      renderAll();
-      applyingCloudData = false;
+      try {
+        renderAll();
+      } catch (renderError) {
+        console.error("UI render failed:", renderError);
+        alert(`画面の表示処理でエラーが発生しました。\n${renderError.message}`);
+      } finally {
+        applyingCloudData = false;
+      }
       setSyncStatus("同期済み", "sync-ok");
     },
     error => {
