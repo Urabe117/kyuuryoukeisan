@@ -1407,10 +1407,10 @@ header.topbar p {
 
 /* ===== v21: くすみピンク〜紫パレット + 紺色UI ===== */
 :root {
-  --primary: #4F687D;
+  --primary: #284052;
   --primary-dark: #3F5668;
   --primary-light: #E9EFF3;
-  --accent: #4F687D;
+  --accent: #284052;
 }
 
 /* これまで灰色だった主要UIを紺色へ */
@@ -1421,8 +1421,8 @@ button:not(.color-choice):not(.color-option):not(.shift-chip):not(.payday-marker
 .fab,
 .primary,
 .view-tabs .tab-btn {
-  background: #4F687D !important;
-  border-color: #4F687D !important;
+  background: #284052 !important;
+  border-color: #284052 !important;
   color: #FFFFFF !important;
 }
 
@@ -1438,7 +1438,7 @@ button:not(.color-choice):not(.color-option):not(.shift-chip):not(.payday-marker
 button.secondary,
 .file-label.secondary {
   background: #E9EFF3 !important;
-  color: #4F687D !important;
+  color: #284052 !important;
   border-color: #CBD5E1 !important;
 }
 
@@ -1446,8 +1446,8 @@ button.secondary,
 .current-day,
 .selected,
 .job-choice.selected {
-  outline-color: #4F687D !important;
-  border-color: #4F687D !important;
+  outline-color: #284052 !important;
+  border-color: #284052 !important;
 }
 
 /* ヘッダーは白のまま、文字とボタンだけ紺色 */
@@ -1455,37 +1455,37 @@ button.secondary,
 header.topbar,
 body > header {
   background: #FFFFFF !important;
-  color: #4F687D !important;
+  color: #284052 !important;
 }
 
 .topbar h1,
 .topbar p,
 header.topbar h1,
 header.topbar p {
-  color: #4F687D !important;
+  color: #284052 !important;
 }
 
 .topbar .header-actions button,
 .topbar .header-actions .file-label {
-  background: #4F687D !important;
+  background: #284052 !important;
   color: #FFFFFF !important;
-  border-color: #4F687D !important;
+  border-color: #284052 !important;
 }
 
 /* パレット選択枠 */
 #colorPalette .color-choice.selected {
-  border-color: #4F687D !important;
-  outline: 3px solid #4F687D !important;
+  border-color: #284052 !important;
+  outline: 3px solid #284052 !important;
   outline-offset: 2px;
 }
 
 
-/* ===== v22: 指定16色パレット + #4F687D UI ===== */
+/* ===== v22: 指定16色パレット + #284052 UI ===== */
 :root {
-  --primary: #4F687D;
+  --primary: #284052;
   --primary-dark: #3F5668;
   --primary-light: #E9EFF3;
-  --accent: #4F687D;
+  --accent: #284052;
 }
 
 #colorPalette,
@@ -1502,7 +1502,234 @@ header.topbar p {
 }
 
 #colorPalette .color-choice.selected {
-  border-color: #4F687D !important;
-  outline: 3px solid #4F687D !important;
+  border-color: #284052 !important;
+  outline: 3px solid #284052 !important;
   outline-offset: 2px;
+}
+
+
+/* ===== v24: 16色パレットに合わせた統一デザイン ===== */
+:root {
+  --primary: #284052;
+  --primary-dark: #1F3342;
+  --primary-soft: #C5D3D6;
+  --surface: #FFFFFF;
+  --surface-soft: #F7F4F2;
+  --border: #E8E2D9;
+  --text: #284052;
+  --muted: #7A8790;
+  --accent-warm: #C97E83;
+  --accent-soft: #E3B7B0;
+}
+
+/* 全体 */
+body {
+  background: linear-gradient(180deg, #F7F4F2 0%, #F3F5F6 100%) !important;
+  color: var(--text) !important;
+}
+
+/* ヘッダー */
+.topbar,
+header.topbar,
+body > header {
+  background: #FFFFFF !important;
+  color: var(--text) !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.topbar h1,
+.topbar p,
+header.topbar h1,
+header.topbar p {
+  color: var(--text) !important;
+}
+
+/* カード */
+.card,
+.calendar-card,
+.table-card,
+.goal-card,
+section,
+.summary-card,
+.stat-card {
+  background: rgba(255,255,255,.96) !important;
+  border-color: var(--border) !important;
+  box-shadow: 0 8px 24px rgba(40,64,82,.08) !important;
+}
+
+/* 主要ボタン */
+button:not(.color-choice):not(.shift-chip):not(.payday-marker):not(.job-choice),
+.btn-primary,
+.header-button,
+.calendar-nav,
+.fab,
+.primary,
+.view-tabs .tab-btn {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: #FFFFFF !important;
+  box-shadow: none !important;
+}
+
+button:not(.color-choice):not(.shift-chip):not(.payday-marker):not(.job-choice):hover,
+.btn-primary:hover,
+.calendar-nav:hover {
+  background: var(--primary-dark) !important;
+  border-color: var(--primary-dark) !important;
+}
+
+/* サブボタン */
+.secondary,
+button.secondary,
+.file-label.secondary {
+  background: var(--primary-soft) !important;
+  color: var(--primary) !important;
+  border-color: #B4C5CA !important;
+}
+
+/* タブ */
+.view-tabs {
+  background: #FFFFFF !important;
+  border-color: var(--border) !important;
+}
+
+.view-tabs .tab-btn {
+  background: #E6ECEF !important;
+  color: var(--primary) !important;
+}
+
+.view-tabs .tab-btn.active {
+  background: var(--primary) !important;
+  color: #FFFFFF !important;
+}
+
+/* カレンダー */
+.calendar,
+.payday-grid {
+  border-color: var(--border) !important;
+}
+
+.day,
+.weekday {
+  border-color: var(--border) !important;
+}
+
+.weekday {
+  color: var(--muted) !important;
+}
+
+.day.outside {
+  background: #F8F8F7 !important;
+  color: #AAB2B7 !important;
+}
+
+.day.today,
+.current-day {
+  outline: 2px solid var(--accent-warm) !important;
+  outline-offset: -2px;
+}
+
+/* 集計 */
+.stat-card,
+.summary-card {
+  background: linear-gradient(180deg, #FFFFFF 0%, #FAFBFB 100%) !important;
+}
+
+.stat-card strong,
+.summary-card strong,
+table tfoot {
+  color: var(--primary) !important;
+}
+
+/* 入力欄・モーダル */
+dialog,
+dialog form,
+.detail-dialog-inner {
+  background: #FFFFFF !important;
+  color: var(--text) !important;
+}
+
+input,
+select,
+textarea {
+  background: #FFFFFF !important;
+  border-color: #D7DEE2 !important;
+  color: var(--text) !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--accent-warm) !important;
+  outline: 3px solid rgba(201,126,131,.18) !important;
+}
+
+/* バイト選択 */
+.job-choice {
+  background: #F7F4F2 !important;
+  color: var(--primary) !important;
+  border-color: transparent !important;
+}
+
+.job-choice.selected {
+  background: #F1E4E2 !important;
+  color: #624B48 !important;
+  border-color: var(--accent-warm) !important;
+  outline-color: var(--accent-warm) !important;
+}
+
+/* プレビュー・情報枠 */
+.calc-preview,
+.shift-detail-list > div,
+.payday-detail-row {
+  background: #F8F6F4 !important;
+  border-color: var(--border) !important;
+}
+
+/* カラーパレット */
+#colorPalette,
+.color-palette {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+}
+
+#colorPalette .color-choice {
+  border: 2px solid rgba(40,64,82,.12) !important;
+}
+
+#colorPalette .color-choice.selected {
+  border-color: var(--primary) !important;
+  outline: 3px solid var(--accent-warm) !important;
+  outline-offset: 2px;
+}
+
+/* 危険操作 */
+button.danger,
+.danger {
+  background: #C97E83 !important;
+  border-color: #C97E83 !important;
+  color: #FFFFFF !important;
+}
+
+button.danger:hover {
+  background: #A96369 !important;
+  border-color: #A96369 !important;
+}
+
+/* スマホ微調整 */
+@media (max-width: 520px) {
+  .card,
+  .calendar-card,
+  .table-card,
+  section {
+    border-radius: 18px !important;
+  }
+
+  .topbar {
+    padding-bottom: 14px !important;
+  }
+
+  .view-tabs .tab-btn {
+    font-size: 14px;
+  }
 }
