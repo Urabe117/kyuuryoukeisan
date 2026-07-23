@@ -49,7 +49,7 @@ button.danger {
   align-items: center;
   gap: 16px;
   padding: 24px clamp(16px, 4vw, 48px);
-  background: #111827;
+  background: #3F5668;
   color: #fff;
 }
 
@@ -241,7 +241,7 @@ dialog form { padding: 20px; display: grid; gap: 14px; }
 .modal-header h2 { margin: 0; }
 .close-btn {
   background: #f3f4f6;
-  color: #111827;
+  color: #3F5668;
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -312,11 +312,11 @@ label { display: grid; gap: 7px; font-weight: 700; }
 
 .color-palette { display:grid; grid-template-columns:repeat(10, minmax(28px,1fr)); gap:8px; }
 .color-choice { width:100%; aspect-ratio:1; min-width:28px; padding:0; border-radius:50%; border:3px solid transparent; box-shadow:inset 0 0 0 1px rgba(0,0,0,.12); }
-.color-choice.selected { border-color:#111827; transform:scale(1.08); }
+.color-choice.selected { border-color:#3F5668; transform:scale(1.08); }
 .field-note { margin:-6px 0 0; color:var(--muted); font-size:13px; }
 .preset-buttons { display:flex; flex-wrap:wrap; gap:9px; }
 .preset-buttons.compact { margin-top:8px; }
-.preset-button { display:flex; align-items:center; gap:8px; background:#f8fafc; color:#111827; border:1px solid var(--border); font-weight:700; }
+.preset-button { display:flex; align-items:center; gap:8px; background:#f8fafc; color:#3F5668; border:1px solid var(--border); font-weight:700; }
 .preset-button:hover { background:#eef2ff; }
 .preset-button small { color:var(--muted); font-weight:600; }
 @media (max-width:520px){ .color-palette{grid-template-columns:repeat(5,1fr)} .preset-button{width:100%;justify-content:space-between} }
@@ -1350,7 +1350,7 @@ button.secondary,
 header.topbar,
 body > header {
   background: #FFFFFF !important;
-  color: #111827 !important;
+  color: #3F5668 !important;
   border-bottom: 1px solid #E5E7EB !important;
 }
 
@@ -1358,7 +1358,7 @@ body > header {
 .topbar p,
 header.topbar h1,
 header.topbar p {
-  color: #111827 !important;
+  color: #3F5668 !important;
 }
 
 .topbar .header-actions button,
@@ -1407,10 +1407,10 @@ header.topbar p {
 
 /* ===== v21: くすみピンク〜紫パレット + 紺色UI ===== */
 :root {
-  --primary: #1F2A44;
-  --primary-dark: #111827;
-  --primary-light: #E8ECF3;
-  --accent: #1F2A44;
+  --primary: #4F687D;
+  --primary-dark: #3F5668;
+  --primary-light: #E9EFF3;
+  --accent: #4F687D;
 }
 
 /* これまで灰色だった主要UIを紺色へ */
@@ -1421,24 +1421,24 @@ button:not(.color-choice):not(.color-option):not(.shift-chip):not(.payday-marker
 .fab,
 .primary,
 .view-tabs .tab-btn {
-  background: #1F2A44 !important;
-  border-color: #1F2A44 !important;
+  background: #4F687D !important;
+  border-color: #4F687D !important;
   color: #FFFFFF !important;
 }
 
 button:not(.color-choice):not(.color-option):not(.shift-chip):not(.payday-marker):not(.job-choice):hover,
 .btn-primary:hover,
 .calendar-nav:hover {
-  background: #111827 !important;
-  border-color: #111827 !important;
+  background: #3F5668 !important;
+  border-color: #3F5668 !important;
 }
 
 /* サブボタンは淡い紺系 */
 .secondary,
 button.secondary,
 .file-label.secondary {
-  background: #E8ECF3 !important;
-  color: #1F2A44 !important;
+  background: #E9EFF3 !important;
+  color: #4F687D !important;
   border-color: #CBD5E1 !important;
 }
 
@@ -1446,8 +1446,8 @@ button.secondary,
 .current-day,
 .selected,
 .job-choice.selected {
-  outline-color: #1F2A44 !important;
-  border-color: #1F2A44 !important;
+  outline-color: #4F687D !important;
+  border-color: #4F687D !important;
 }
 
 /* ヘッダーは白のまま、文字とボタンだけ紺色 */
@@ -1455,26 +1455,54 @@ button.secondary,
 header.topbar,
 body > header {
   background: #FFFFFF !important;
-  color: #1F2A44 !important;
+  color: #4F687D !important;
 }
 
 .topbar h1,
 .topbar p,
 header.topbar h1,
 header.topbar p {
-  color: #1F2A44 !important;
+  color: #4F687D !important;
 }
 
 .topbar .header-actions button,
 .topbar .header-actions .file-label {
-  background: #1F2A44 !important;
+  background: #4F687D !important;
   color: #FFFFFF !important;
-  border-color: #1F2A44 !important;
+  border-color: #4F687D !important;
 }
 
 /* パレット選択枠 */
 #colorPalette .color-choice.selected {
-  border-color: #1F2A44 !important;
-  outline: 3px solid #1F2A44 !important;
+  border-color: #4F687D !important;
+  outline: 3px solid #4F687D !important;
+  outline-offset: 2px;
+}
+
+
+/* ===== v22: 指定16色パレット + #4F687D UI ===== */
+:root {
+  --primary: #4F687D;
+  --primary-dark: #3F5668;
+  --primary-light: #E9EFF3;
+  --accent: #4F687D;
+}
+
+#colorPalette,
+.color-palette {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+}
+
+#colorPalette .color-choice {
+  width: 100% !important;
+  aspect-ratio: 1 / 1;
+  min-height: 0 !important;
+  border-radius: 50% !important;
+}
+
+#colorPalette .color-choice.selected {
+  border-color: #4F687D !important;
+  outline: 3px solid #4F687D !important;
   outline-offset: 2px;
 }
