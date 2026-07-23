@@ -692,7 +692,7 @@ document.getElementById("nextMonthBtn").addEventListener("click", () => {
   renderAll();
 });
 
-document.getElementById("todayBtn").addEventListener("click", () => {
+document.getElementById("todayBtn")?.addEventListener("click", () => {
   currentDate = new Date();
   currentDate.setDate(1);
   renderAll();
@@ -880,7 +880,7 @@ document.getElementById("workTabBtn").addEventListener("click",()=>{document.get
 document.getElementById("paydayTabBtn").addEventListener("click",()=>{document.getElementById("workView").classList.add("hidden");document.getElementById("paydayView").classList.remove("hidden");document.getElementById("paydayTabBtn").classList.add("active");document.getElementById("workTabBtn").classList.remove("active");renderPaydayCalendar();});
 document.getElementById("payPrevMonthBtn").addEventListener("click",()=>{paydayDate.setMonth(paydayDate.getMonth()-1);renderPaydayCalendar();});
 document.getElementById("payNextMonthBtn").addEventListener("click",()=>{paydayDate.setMonth(paydayDate.getMonth()+1);renderPaydayCalendar();});
-document.getElementById("payTodayBtn").addEventListener("click",()=>{paydayDate=new Date();paydayDate.setDate(1);renderPaydayCalendar();});
+document.getElementById("payTodayBtn")?.addEventListener("click",()=>{paydayDate=new Date();paydayDate.setDate(1);renderPaydayCalendar();});
 
 initDaySelects();
 
