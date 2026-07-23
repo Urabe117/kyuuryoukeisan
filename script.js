@@ -50,26 +50,26 @@ const defaultData = {
 };
 
 const COLOR_CHOICES = [
-  "#F9A8D4",
-  "#FBCFE8",
-  "#F5D0FE",
-  "#E9D5FF",
-  "#DDD6FE",
-  "#C4B5FD",
-  "#C7D2FE",
-  "#BFDBFE",
-  "#BAE6FD",
-  "#A5F3FC",
-  "#99F6E4",
-  "#A7F3D0",
-  "#BBF7D0",
-  "#D9F99D",
-  "#FEF3C7",
-  "#FDE68A",
-  "#FED7AA",
-  "#FECACA",
-  "#E5E7EB",
-  "#CBD5E1"
+  "#7C3A5D",
+  "#84405F",
+  "#8D4668",
+  "#965070",
+  "#9F5A7A",
+  "#7D466E",
+  "#754065",
+  "#6E3A5C",
+  "#693654",
+  "#62314D",
+  "#6F4A78",
+  "#694271",
+  "#633C6A",
+  "#5D3763",
+  "#57315C",
+  "#51445F",
+  "#4B3F59",
+  "#463A53",
+  "#40354D",
+  "#3A3047"
 ];
 
 let data = loadData();

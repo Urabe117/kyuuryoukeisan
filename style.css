@@ -1403,3 +1403,78 @@ header.topbar p {
   outline: 3px solid #9CA3AF !important;
   outline-offset: 2px;
 }
+
+
+/* ===== v21: くすみピンク〜紫パレット + 紺色UI ===== */
+:root {
+  --primary: #1F2A44;
+  --primary-dark: #111827;
+  --primary-light: #E8ECF3;
+  --accent: #1F2A44;
+}
+
+/* これまで灰色だった主要UIを紺色へ */
+button:not(.color-choice):not(.color-option):not(.shift-chip):not(.payday-marker):not(.job-choice),
+.btn-primary,
+.header-button,
+.calendar-nav,
+.fab,
+.primary,
+.view-tabs .tab-btn {
+  background: #1F2A44 !important;
+  border-color: #1F2A44 !important;
+  color: #FFFFFF !important;
+}
+
+button:not(.color-choice):not(.color-option):not(.shift-chip):not(.payday-marker):not(.job-choice):hover,
+.btn-primary:hover,
+.calendar-nav:hover {
+  background: #111827 !important;
+  border-color: #111827 !important;
+}
+
+/* サブボタンは淡い紺系 */
+.secondary,
+button.secondary,
+.file-label.secondary {
+  background: #E8ECF3 !important;
+  color: #1F2A44 !important;
+  border-color: #CBD5E1 !important;
+}
+
+/* 選択枠も紺色 */
+.current-day,
+.selected,
+.job-choice.selected {
+  outline-color: #1F2A44 !important;
+  border-color: #1F2A44 !important;
+}
+
+/* ヘッダーは白のまま、文字とボタンだけ紺色 */
+.topbar,
+header.topbar,
+body > header {
+  background: #FFFFFF !important;
+  color: #1F2A44 !important;
+}
+
+.topbar h1,
+.topbar p,
+header.topbar h1,
+header.topbar p {
+  color: #1F2A44 !important;
+}
+
+.topbar .header-actions button,
+.topbar .header-actions .file-label {
+  background: #1F2A44 !important;
+  color: #FFFFFF !important;
+  border-color: #1F2A44 !important;
+}
+
+/* パレット選択枠 */
+#colorPalette .color-choice.selected {
+  border-color: #1F2A44 !important;
+  outline: 3px solid #1F2A44 !important;
+  outline-offset: 2px;
+}
