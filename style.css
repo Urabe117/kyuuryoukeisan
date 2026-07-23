@@ -1273,3 +1273,59 @@ button:hover,
 .progress-fill{
   background:var(--primary)!important;
 }
+
+
+/* ===== v18: 薄いグレー基調 + バイト色20色 ===== */
+:root {
+  --primary: #9CA3AF;
+  --primary-dark: #6B7280;
+  --primary-light: #F3F4F6;
+  --accent: #9CA3AF;
+}
+
+/* UIの主張を弱める */
+button:not(.color-option):not(.shift-chip):not(.payday-marker):not(.job-choice),
+.btn-primary,
+.header-button,
+.calendar-nav,
+.fab,
+.primary {
+  background: #9CA3AF !important;
+  border-color: #9CA3AF !important;
+  color: #FFFFFF !important;
+}
+
+button:not(.color-option):not(.shift-chip):not(.payday-marker):not(.job-choice):hover,
+.btn-primary:hover {
+  background: #6B7280 !important;
+}
+
+.secondary,
+button.secondary,
+.file-label.secondary {
+  background: #F3F4F6 !important;
+  color: #4B5563 !important;
+  border-color: #E5E7EB !important;
+}
+
+/* カラーパレットは必ず各色をそのまま表示 */
+.color-palette button,
+.color-option {
+  background: var(--swatch-color, initial) !important;
+  border: 2px solid rgba(17, 24, 39, 0.14) !important;
+  box-shadow: none !important;
+}
+
+.color-palette button.selected,
+.color-option.selected {
+  outline: 3px solid #374151 !important;
+  outline-offset: 2px;
+}
+
+/* 選択済みのバイト色は上書きしない */
+.shift-chip,
+.payday-marker,
+.job-choice .color-dot,
+.color-dot {
+  forced-color-adjust: none;
+}
