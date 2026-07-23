@@ -50,10 +50,26 @@ const defaultData = {
 };
 
 const COLOR_CHOICES = [
-  "#ef4444", "#f97316", "#f59e0b", "#eab308", "#84cc16",
-  "#22c55e", "#10b981", "#14b8a6", "#06b6d4", "#0ea5e9",
-  "#3b82f6", "#6366f1", "#8b5cf6", "#a855f7", "#d946ef",
-  "#ec4899", "#f43f5e", "#78716c", "#64748b", "#111827"
+  "#EF4444",
+  "#F97316",
+  "#F59E0B",
+  "#EAB308",
+  "#84CC16",
+  "#22C55E",
+  "#10B981",
+  "#14B8A6",
+  "#06B6D4",
+  "#0EA5E9",
+  "#3B82F6",
+  "#6366F1",
+  "#8B5CF6",
+  "#A855F7",
+  "#D946EF",
+  "#EC4899",
+  "#F43F5E",
+  "#A3A3A3",
+  "#78716C",
+  "#111827"
 ];
 
 let data = loadData();
@@ -311,28 +327,7 @@ function renderShiftList() {
   });
 }
 
-const COLORS = [
-  "#EF4444",
-  "#F97316",
-  "#F59E0B",
-  "#EAB308",
-  "#84CC16",
-  "#22C55E",
-  "#10B981",
-  "#14B8A6",
-  "#06B6D4",
-  "#0EA5E9",
-  "#3B82F6",
-  "#6366F1",
-  "#8B5CF6",
-  "#A855F7",
-  "#D946EF",
-  "#EC4899",
-  "#F43F5E",
-  "#A3A3A3",
-  "#78716C",
-  "#111827"
-];
+
 
 function renderColorPalette(selected = document.getElementById("jobColor").value || COLOR_CHOICES[0]) {
   const palette = document.getElementById("colorPalette");
@@ -341,7 +336,7 @@ function renderColorPalette(selected = document.getElementById("jobColor").value
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = `color-choice${color === selected ? " selected" : ""}`;
-    btn.style.background = color;
+    btn.style.setProperty("background-color", color, "important");
     btn.style.setProperty("--swatch-color", color);
     btn.title = color;
     btn.addEventListener("click", () => {

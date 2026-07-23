@@ -1284,7 +1284,7 @@ button:hover,
 }
 
 /* UIの主張を弱める */
-button:not(.color-option):not(.shift-chip):not(.payday-marker):not(.job-choice),
+button:not(.color-choice):not(.color-option):not(.shift-chip):not(.payday-marker):not(.job-choice),
 .btn-primary,
 .header-button,
 .calendar-nav,
@@ -1295,7 +1295,7 @@ button:not(.color-option):not(.shift-chip):not(.payday-marker):not(.job-choice),
   color: #FFFFFF !important;
 }
 
-button:not(.color-option):not(.shift-chip):not(.payday-marker):not(.job-choice):hover,
+button:not(.color-choice):not(.color-option):not(.shift-chip):not(.payday-marker):not(.job-choice):hover,
 .btn-primary:hover {
   background: #6B7280 !important;
 }
@@ -1328,4 +1328,18 @@ button.secondary,
 .job-choice .color-dot,
 .color-dot {
   forced-color-adjust: none;
+}
+
+
+/* ===== v19: カラーパレットを確実に20色表示 ===== */
+#colorPalette .color-choice {
+  background-color: var(--swatch-color) !important;
+  border: 2px solid rgba(17, 24, 39, 0.14) !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.18) !important;
+}
+
+#colorPalette .color-choice.selected {
+  border-color: #374151 !important;
+  outline: 3px solid #374151 !important;
+  outline-offset: 2px;
 }
