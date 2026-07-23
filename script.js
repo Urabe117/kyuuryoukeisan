@@ -379,25 +379,7 @@ function createPresetButton(preset) {
   btn.innerHTML = `<span><span class="color-dot" style="background:${job?.color || '#64748b'}"></span>${preset.name}</span><small>${preset.startTime}–${preset.endTime}</small>`;
 
   btn.addEventListener("click", () => {
-    const selectedDate = document.getElementById("shiftDate").value;
-    if (!selectedDate) {
-      alert("先に日付を選んでください。");
-      return;
-    }
-
-    const shift = {
-      id: crypto.randomUUID(),
-      date: selectedDate,
-      jobId: preset.jobId,
-      startTime: preset.startTime,
-      endTime: preset.endTime,
-      breakMinutes: Number(preset.breakMinutes || 0)
-    };
-
-    data.shifts.push(shift);
-    saveData();
-    renderAll();
-    document.getElementById("shiftModal").close();
+    applyPresetToShiftForm(preset);
   });
 
   return btn;
@@ -579,11 +561,28 @@ function openShiftModal(shift = null, selectedDate = null) {
   }
 
   renderShiftJobChoices(selectedJobId);
+  renderPresetOptions();
   updatePreview();
   document.getElementById("shiftModal").showModal();
 }
 
+function snapTimeToTenMinutes(value) {
+  if (!value) return "";
+  const [hour, minute] = value.split(":").map(Number);
+  const totalMinutes = hour * 60 + minute;
+  const snapped = Math.round(totalMinutes / 10) * 10;
+  const normalized = snapped % (24 * 60);
+  return `${pad(Math.floor(normalized / 60))}:${pad(normalized % 60)}`;
+}
+
+function normalizeTimeInput(input) {
+  if (!input?.value) return;
+  input.value = snapTimeToTenMinutes(input.value);
+}
+
 function getShiftFormData() {
+  normalizeTimeInput(document.getElementById("startTime"));
+  normalizeTimeInput(document.getElementById("endTime"));
   return {
     id: document.getElementById("shiftId").value || crypto.randomUUID(),
     date: document.getElementById("shiftDate").value,
@@ -613,6 +612,8 @@ document.getElementById("presetForm").addEventListener("submit", e => {
     return;
   }
   e.preventDefault();
+  normalizeTimeInput(document.getElementById("presetStart"));
+  normalizeTimeInput(document.getElementById("presetEnd"));
   const id = document.getElementById("presetId").value || crypto.randomUUID();
   const preset = {
     id,
@@ -695,8 +696,20 @@ document.getElementById("deleteShiftBtn").addEventListener("click", () => {
   document.getElementById("shiftModal").close();
 });
 
-["startTime", "endTime", "breakMinutes"].forEach(id => {
-  document.getElementById(id).addEventListener("input", updatePreview);
+["startTime", "endTime"].forEach(id => {
+  const input = document.getElementById(id);
+  input.addEventListener("input", updatePreview);
+  input.addEventListener("change", () => {
+    normalizeTimeInput(input);
+    updatePreview();
+  });
+});
+
+document.getElementById("breakMinutes").addEventListener("input", updatePreview);
+
+["presetStart", "presetEnd"].forEach(id => {
+  const input = document.getElementById(id);
+  input.addEventListener("change", () => normalizeTimeInput(input));
 });
 
 

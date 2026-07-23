@@ -161,10 +161,10 @@
       </label>
       <div class="two-cols">
         <label>開始時刻
-          <input id="presetStart" type="time" required />
+          <input id="presetStart" type="time" step="600" required />
         </label>
         <label>終了時刻
-          <input id="presetEnd" type="time" required />
+          <input id="presetEnd" type="time" step="600" required />
         </label>
       </div>
       <label>休憩（分）
@@ -197,12 +197,17 @@
         <div id="shiftJobChoices" class="job-choice-grid" role="radiogroup" aria-label="バイト先"></div>
       </div>
 
+      <div class="shift-preset-section">
+        <label>プリセットを選択</label>
+        <div id="shiftPresetList" class="preset-buttons compact"></div>
+      </div>
+
       <div class="time-row">
         <label>開始時刻
-          <input id="startTime" type="time" required />
+          <input id="startTime" type="time" step="600" required />
         </label>
         <label>終了時刻
-          <input id="endTime" type="time" required />
+          <input id="endTime" type="time" step="600" required />
         </label>
       </div>
 

@@ -1506,3 +1506,67 @@ header.topbar p {
   outline: 3px solid #4F687D !important;
   outline-offset: 2px;
 }
+
+
+/* ===== v23: 勤務登録の店舗選択・プリセット・10分刻み ===== */
+#shiftModal .job-choice {
+  background: #FFFFFF !important;
+  color: #111827 !important;
+  border: 1px solid #D6DEE5 !important;
+  box-shadow: none !important;
+}
+
+#shiftModal .job-choice:hover {
+  background: #F7F9FB !important;
+  color: #111827 !important;
+  border-color: #AAB8C4 !important;
+}
+
+#shiftModal .job-choice.selected {
+  background: #F1F5F8 !important;
+  color: #111827 !important;
+  border: 2px solid #4F687D !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(79, 104, 125, .12) !important;
+}
+
+.shift-preset-section {
+  display: grid;
+  gap: 7px;
+}
+
+#shiftPresetList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 0;
+}
+
+#shiftPresetList .preset-button {
+  width: 100%;
+  min-width: 0;
+  justify-content: space-between;
+  background: #FFFFFF !important;
+  color: #111827 !important;
+  border: 1px solid #D6DEE5 !important;
+  padding: 9px 10px;
+}
+
+#shiftPresetList .preset-button:hover {
+  background: #F1F5F8 !important;
+  border-color: #4F687D !important;
+}
+
+#shiftPresetList .preset-button small {
+  color: #4F687D !important;
+}
+
+@media (max-width: 520px) {
+  #shiftPresetList {
+    grid-template-columns: 1fr;
+  }
+
+  #shiftPresetList .preset-button {
+    font-size: 12px;
+  }
+}
