@@ -50,26 +50,26 @@ const defaultData = {
 };
 
 const COLOR_CHOICES = [
-  "#EF4444",
-  "#F97316",
-  "#F59E0B",
-  "#EAB308",
-  "#84CC16",
-  "#22C55E",
-  "#10B981",
-  "#14B8A6",
-  "#06B6D4",
-  "#0EA5E9",
-  "#3B82F6",
-  "#6366F1",
-  "#8B5CF6",
-  "#A855F7",
-  "#D946EF",
-  "#EC4899",
-  "#F43F5E",
-  "#A3A3A3",
-  "#78716C",
-  "#111827"
+  "#F9A8D4",
+  "#FBCFE8",
+  "#F5D0FE",
+  "#E9D5FF",
+  "#DDD6FE",
+  "#C4B5FD",
+  "#C7D2FE",
+  "#BFDBFE",
+  "#BAE6FD",
+  "#A5F3FC",
+  "#99F6E4",
+  "#A7F3D0",
+  "#BBF7D0",
+  "#D9F99D",
+  "#FEF3C7",
+  "#FDE68A",
+  "#FED7AA",
+  "#FECACA",
+  "#E5E7EB",
+  "#CBD5E1"
 ];
 
 let data = loadData();
@@ -226,7 +226,7 @@ function renderCalendar() {
 
         const chip = document.createElement("div");
         chip.className = "shift-chip";
-        chip.style.background = job.color;
+        chip.style.setProperty("background-color", job.color, "important");
         chip.innerHTML = `
           <b>${job.name}</b>
           <span class="shift-time-vertical">
@@ -854,7 +854,7 @@ function renderPaydayCalendar() {
         const marker = document.createElement("button");
         marker.type = "button";
         marker.className = "payday-marker";
-        marker.style.background = entry.job.color;
+        marker.style.setProperty("background-color", entry.job.color, "important");
         marker.innerHTML = `<span>${entry.job.name}</span><strong>${yen(entry.total)}</strong>`;
         marker.addEventListener("click", event => {
           event.stopPropagation();

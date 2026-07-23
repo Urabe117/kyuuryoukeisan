@@ -1343,3 +1343,63 @@ button.secondary,
   outline: 3px solid #374151 !important;
   outline-offset: 2px;
 }
+
+
+/* ===== v20: パステル配色・ヘッダー白・登録色反映 ===== */
+.topbar,
+header.topbar,
+body > header {
+  background: #FFFFFF !important;
+  color: #111827 !important;
+  border-bottom: 1px solid #E5E7EB !important;
+}
+
+.topbar h1,
+.topbar p,
+header.topbar h1,
+header.topbar p {
+  color: #111827 !important;
+}
+
+.topbar .header-actions button,
+.topbar .header-actions .file-label {
+  background: #E5E7EB !important;
+  color: #374151 !important;
+  border-color: #D1D5DB !important;
+}
+
+/* 給料日カレンダーは登録した店舗色を優先 */
+.payday-marker {
+  color: #FFFFFF !important;
+  border: 0 !important;
+}
+
+.payday-marker span,
+.payday-marker strong {
+  color: #FFFFFF !important;
+}
+
+/* 勤務カレンダーも登録色を優先 */
+.shift-chip {
+  color: #FFFFFF !important;
+  border: 0 !important;
+}
+
+.shift-chip b,
+.shift-chip span,
+.shift-time-vertical,
+.shift-time-vertical span {
+  color: #FFFFFF !important;
+}
+
+/* パステルカラー選択肢 */
+#colorPalette .color-choice {
+  border: 2px solid rgba(55, 65, 81, .12) !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.35) !important;
+}
+
+#colorPalette .color-choice.selected {
+  border-color: #6B7280 !important;
+  outline: 3px solid #9CA3AF !important;
+  outline-offset: 2px;
+}
